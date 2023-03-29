@@ -1,140 +1,151 @@
-const ratesBpop = [0.1035, 0.1155, 0.118, 0.1225, 0.1250, 0.1220, 0.12];
-const ratesBavv = [0.1265, 0.1265, 0.1285, 0.1360, 0.1365, 0.1370];
-const ratesBgta = [0.1317, 0.1365, 0.1381, 0.1433, 0.1436, 0.1465, 0.1478, 0.1482, 0.1512];
-const ratesBocc = [0.05, 0.05, 0.13, 0.14, 0.14, 0.141, 0.138, 0.13, 0.13, 0.13];
+// INFORMACIÓN DE TODAS LAS TASAS DE INTERES DEPENDIENDO DEL BANCO Y DEL PLAZO DADO POR EL USUARIO EN DIAS
 
-const retencionFuente = 0.04;
-const userData = [];
+const bankInterestData = {
+    "bpop": [
+        { range: { min: 90, max: 119 }, rate: 0.1035 },
+        { range: { min: 120, max: 149 }, rate: 0.1155 },
+        { range: { min: 150, max: 179 }, rate: 0.118 },
+        { range: { min: 180, max: 359 }, rate: 0.1225 },
+        { range: { min: 360, max: 539 }, rate: 0.1250 },
+        { range: { min: 540, max: 719 }, rate: 0.1220 },
+        { range: { min: 720, max: 720 }, rate: 0.12 },
+    ],
+    "bavv": [
+        { range: { min: 90, max: 119 }, rate: 0.1235 },
+        { range: { min: 120, max: 179 }, rate: 0.1265 },
+        { range: { min: 180, max: 359 }, rate: 0.1285 },
+        { range: { min: 360, max: 539 }, rate: 0.1360 },
+        { range: { min: 540, max: 719 }, rate: 0.1365 },
+        { range: { min: 720, max: 720 }, rate: 0.1370 },
+    ],
+    "bbgt": [
+        { range: { min: 90, max: 119 }, rate: 0.1317 },
+        { range: { min: 120, max: 179 }, rate: 0.1365 },
+        { range: { min: 180, max: 359 }, rate: 0.1381 },
+        { range: { min: 360, max: 419 }, rate: 0.1433 },
+        { range: { min: 420, max: 509 }, rate: 0.1436 },
+        { range: { min: 510, max: 539 }, rate: 0.1465 },
+        { range: { min: 540, max: 719 }, rate: 0.1478 },
+        { range: { min: 720, max: 900 }, rate: 0.1482 },
+        { range: { min: 900, max: Infinity }, rate: 0.1512 },
+    ],
+    "bocc": [
+        { range: { min: 30, max: 50 }, rate: 0.05 },
+        { range: { min: 51, max: 80 }, rate: 0.055 },
+        { range: { min: 81, max: 150 }, rate: 0.13 },
+        { range: { min: 151, max: 240 }, rate: 0.14 },
+        { range: { min: 241, max: 330 }, rate: 0.141 },
+        { range: { min: 331, max: 539 }, rate: 0.138 },
+        { range: { min: 540, max: 719 }, rate: 0.138 },
+        { range: { min: 720, max: 1079 }, rate: 0.135 },
+        { range: { min: 1080, max: Infinity }, rate: 0.132 },
+    ]
+}
 
-userData[0] = prompt("Ingrese su nombre: ");
-userData[1] = prompt("Ingrese su apellido: ");
-userData[2] = prompt("Ingrese su email: ");
-userData[3] = prompt("Ingrese su número de teléfono");
+// ARREGLO PARA ALMACENAR TODA LA INFORMACIÓN PROPORCIONADA EN EL FORMULARIO
 
-function calculoCDT(mount, term, rates){
-    let calculo = mount*(Math.pow(1+rates, (term/360))-1);
-    let total = calculo - calculo * retencionFuente;
+const userData = {
+    name: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    bank: '',
+    amount: '',
+    term: '',
+    interest: '',
+    revenue: '',
+    compoundInterest: '',
+    numberYears: '',
+    revenueIC: '',
+};
+
+//FUNCION PARA CALCULAR EL INTERES DE ACUERDO AL BANCO SELECCIONADO Y EL PLAZO EN DÍAS
+
+function calculateInterest(bank, term) {
+    let interest = 0;
+
+    if (bank in bankInterestData) {
+        const interestRate = bankInterestData[bank].find(element => term >= element.range.min && term <= element.range.max);
+        if (interestRate) {
+            interest = interestRate.rate;
+        }
+    }
+
+    return interest;
+}
+
+//FUNCION PARA CALCULAR EL CDT CON FORMULA
+
+function calculateCDT(amount, term, rates) {
+    const retencionFuente = 0.04;
+
+    let calculate = amount * (Math.pow(1 + rates, (term / 360)) - 1);
+    let total = calculate - calculate * retencionFuente;
+
     return total;
 }
 
-function selectRatesBpop () {
-    const mount = parseInt(prompt('Ingrese el monto inicial: '));
-    const term = parseInt(prompt('Ingrese el plazo en días (90 - 720): '));
-    if (term >= 90 && term <= 119) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBpop[0]));
-    } else if (term >= 120 && term <= 149) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBpop[1]));
-    } else if (term >= 150 && term <= 179) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBpop[2]));
-    } else if (term >= 180 && term <= 359) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBpop[3]));
-    } else if (term >= 360 && term <= 539) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBpop[4]));
-    } else if (term >= 540 && term <= 719) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBpop[5]));
-    } else if (term == 720) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBpop[6]));
-    } else {
-        alert("No existe ofeta para el plazo dado, por favor repita el flujo, recuerde que el plazo en días es entre 90 y 720 días para el Banco Popular.");
-    }
+//FUNCION PARA CALCULAR INTERES COMPUESTO CON FORMULA
+
+function calculateIC(startCapital, termYears, rates) {
+
+    return (startCapital* (Math.pow(1 + rates, termYears))); 
 }
 
-function selectRatesBavv() {
-    const mount = parseInt(prompt('Ingrese el monto inicial: '));
-    const term = parseInt(prompt('Ingrese el plazo en días (90 en adelante): '));
-    if (term >= 90 && term <= 119) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBavv[0]));
-    } else if (term >= 120 && term <= 179) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBavv[1]));
-    } else if (term >= 180 && term <= 359) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBavv[2]));
-    } else if (term >= 360 && term <= 539) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBavv[3]));
-    } else if (term >= 540 && term <= 719) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBavv[4]));
-    } else if (term >= 720) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBavv[5]));
-    } else {
-        alert("No existe ofeta para el plazo dado, por favor repita el flujo, recuerde que el plazo en días es entre 90 y 720 días para el Banco Popular.");
-    }
-}
+//ALMACENA LA INFORMACIÓN DEL USUARIO EN UN OBJETO AL DAR EN ENVIAR
 
-function selectRatesBgta() {
-    const mount = parseInt(prompt('Ingrese el monto inicial: '));
-    const term = parseInt(prompt('Ingrese el plazo en días (90 en adelante): '));
-    if (term >= 90 && term <= 119) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBgta[0]));
-    } else if (term >= 120 && term <= 179) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBgta[1]));
-    } else if (term >= 180 && term <= 359) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBgta[2]));
-    } else if (term >= 360 && term <= 419) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBgta[3]));
-    } else if (term >= 420 && term <= 509) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBgta[4]));
-    } else if (term >= 510 && term <= 539) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBgta[5]));
-    } else if (term >= 540 && term <= 719) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBgta[6]));
-    } else if (term >= 720 && term <= 900) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBgta[7]));
-    } else if (term > 900) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBgta[8]));
-    } else {
-        alert("No existe ofeta para el plazo dado, por favor repita el flujo, recuerde que el plazo en días es entre 90 y 720 días para el Banco Popular.");
-    }
-}
+const form = document.querySelector("form");
+form.addEventListener('submit', (event) => {
 
-function selectRatesBocc() {
-    const mount = parseInt(prompt('Ingrese el monto inicial: '));
-    const term = parseInt(prompt('Ingrese el plazo en días (30 en adelante): '));
-    if (term >= 30 && term <= 50) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBocc[0]));
-    } else if (term >= 51 && term <= 80) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBocc[1]));
-    } else if (term >= 81 && term <= 150) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBocc[2]));
-    } else if (term == 90) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBocc[3]));
-    } else if (term >= 151 && term <= 240) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBocc[4]));
-    } else if (term >= 241 && term <= 330) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBocc[5]));
-    } else if (term >= 331 && term <= 539) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBocc[6]));
-    } else if (term >= 540 && term <= 719) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBocc[7]));
-    } else if (term >= 720 && term <= 1079) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBocc[8]));
-    } else if (term >= 1080) {
-        alert("Su rentabilidad sería de: " + calculoCDT(mount, term,  ratesBocc[9]));
-    } else {
-        alert("No existe ofeta para el plazo dado, por favor repita el flujo, recuerde que el plazo en días es entre 90 y 720 días para el Banco Popular.");
-    }
-}
+    event.preventDefault();
 
-function bankSelect () {
-    const bankSelectInput = prompt(`Seleccione un banco (ingrese el índice): \n 1. Banco Popular \n 2. Banco Av Villas \n 3. Banco de Bogotá \n 4. Banco de Occidente`);
+    userData.name = document.getElementById("names").value;
+    userData.lastName = document.getElementById("lastName").value;
+    userData.email = document.getElementById("email").value;
+    userData.phone = document.getElementById("numberPhone").value;
+    userData.bank = document.getElementById("bank").value;
+    userData.amount = document.getElementById("amount").value;
+    userData.term = document.getElementById("term").value;
 
-    if(bankSelectInput == '1'){
-        selectRatesBpop();
-    } else if (bankSelectInput == '2'){
-        selectRatesBavv();
-    } else if (bankSelectInput == '3'){
-        selectRatesBgta();
-    } else if (bankSelectInput == '4'){
-        selectRatesBocc();
-    } else {
-        alert("Ha ingresado un inidice no existente, repita el flujo.")
-    }
-}
+    console.log("Información del usuario: " + "\n" + JSON.stringify(userData))
 
-function printUserData() {
-    alert("Confirme sus datos por favor: ");
-    for(let i = 0; i < userData.length; i++){
-        alert(userData[i]);
-    } 
-}  
+})
 
-bankSelect();
-printUserData();
+// CALCULAR EL CDT SEGÚN LO INGRESADO EN EL FORMULARIO
+
+document.querySelector("#calculate").addEventListener('click', (event) => {
+
+    event.preventDefault();
+    userData.bank = document.getElementById("bank").value;
+    userData.amount = document.getElementById("amount").value;
+    userData.term = document.getElementById("term").value;
+
+    userData.interest = calculateInterest(userData.bank.toLowerCase(), userData.term);
+    console.log("El interes aplicado es: " + userData.interest * 100 + "%");
+
+    userData.revenue = calculateCDT(userData.amount, userData.term, userData.interest);
+    console.log("Tu ganancia sería de: " + userData.revenue + " pesos");
+
+    userData.numberYears = document.getElementById("numberYearsIC").value;
+    userData.revenueIC = calculateIC(userData.amount, userData.numberYears, userData.interest);
+    console.log("Las ganancias con interes compuesto a " + userData.numberYears + " años, es de: " + userData.revenueIC);
+})
+
+// PARA SABER SI EL CLIENTE DESEA CALCULAR INTERES COMPUESTO O NO
+
+document.querySelector("#radioButtonYes").addEventListener('click', () => {
+
+    userData.compoundInterest = document.getElementById("radioButtonYes").value
+    console.log(userData.compoundInterest);
+    console.log("Por favor ingrese en el formulario el numero de años:");
+
+})
+
+document.querySelector("#radioButtonNo").addEventListener('click', () => {
+
+    userData.compoundInterest = document.getElementById("radioButtonNo").value
+    console.log(userData.compoundInterest);
+    console.log("Por favor oprima el boton de calcular y si esta de acuerdo con el resultado envíe sus resultados:");
+
+})
+

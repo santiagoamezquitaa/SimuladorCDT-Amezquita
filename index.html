@@ -89,20 +89,27 @@
             </div>
             <form action="">
                 <h3>DATOS DE CONTÁCTO</h3>
-                <input type="text" placeholder="Nombres">
-                <input type="text" placeholder="Apellidos">
-                <input type="text" placeholder="E-mail">
-                <input type="text" placeholder="Celular">
+                <input type="text" placeholder="Nombres" id="names">
+                <br>
+                <input type="text" placeholder="Apellidos" id="lastName">
+                <br>
+                <input type="text" placeholder="E-mail" id="email">
+                <br>
+                <input type="text" placeholder="Celular" id="numberPhone">
+                <br>
                 <h3>DATOS PARA CÁLCULO DE CDT</h3>
-                <select name="" id="">
+                <select name="bank" id="bank">
                     <option selected>Selecciona un banco</option>
                     <option value="BPOP">Banco Popular</option>
                     <option value="BAVV">Banco Av Villas</option>
                     <option value="BBGT">Banco de Bogotá</option>
                     <option value="BOCC">Banco de Occidente</option>
                 </select>
-                <input type="number" name="" id="" placeholder="Ingresa el monto inicial">
-                <input type="number" name="" id="" placeholder="Ingresa el plazo en días">
+                <br>
+                <input type="number" name="amount" id="amount" placeholder="Ingresa el monto inicial">
+                <br>
+                <input type="number" name="term" id="term" placeholder="Ingresa el plazo en días">
+                <br>
                 <div>
                     <p>Tu ganancia sería de:</p>
                     <p>$200,000.00</p>
@@ -112,11 +119,12 @@
                     </div>
                 </div>
                 <p>¿Deseas calcular interés compuesto? </p>
-                <input type="checkbox" name="" id="">
+                <input name="intCompuesto" id="radioButtonYes" type="radio" value="YES"/>
                 <label for="">Si</label>
-                <input type="checkbox" name="" id="" checked>
+                <input name="intCompuesto" id="radioButtonNo" type="radio" value="NO" />
                 <label for="">No</label>
-                <input type="number" name="" id="" placeholder="Ingresa el numero de años">
+                <br>
+                <input type="number" name="numberYearsIC" id="numberYearsIC" placeholder="Ingresa el numero de años">
                 <div>
                     <p>Tu ganancia con interés compuesto pero a 10 años sería:</p>
                     <p>$20,000,000.00</p>
@@ -124,7 +132,7 @@
                         <p>Tasa anual: 10.35%</p>
                     </div>
                 </div>
-                <input type="button" value="CALCULAR">
+                <input type="button" id="calculate" value="CALCULAR">
                 <input type="submit" value="ENVÍAR RESULTADOS">
             </form>      
         </div>
