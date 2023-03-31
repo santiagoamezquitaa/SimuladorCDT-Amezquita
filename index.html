@@ -89,51 +89,57 @@
             </div>
             <form action="">
                 <h3>DATOS DE CONTÁCTO</h3>
-                <input type="text" placeholder="Nombres" id="names">
+                <input type="text" placeholder="Nombres" id="names" class="campos" required>
                 <br>
-                <input type="text" placeholder="Apellidos" id="lastName">
+                <input type="text" placeholder="Apellidos" id="lastName" class="campos"  required>
                 <br>
-                <input type="text" placeholder="E-mail" id="email">
+                <input type="text" placeholder="E-mail" id="email" class="campos"  required>
                 <br>
-                <input type="text" placeholder="Celular" id="numberPhone">
+                <input type="text" placeholder="Celular" id="numberPhone" class="campos"  required>
                 <br>
                 <h3>DATOS PARA CÁLCULO DE CDT</h3>
-                <select name="bank" id="bank">
-                    <option selected>Selecciona un banco</option>
+                <select name="bank" id="selectBank" class="campos" required>
+                    <option selected disabled value="">Selecciona un banco</option>
                     <option value="BPOP">Banco Popular</option>
                     <option value="BAVV">Banco Av Villas</option>
                     <option value="BBGT">Banco de Bogotá</option>
                     <option value="BOCC">Banco de Occidente</option>
                 </select>
                 <br>
-                <input type="number" name="amount" id="amount" placeholder="Ingresa el monto inicial">
+                <input type="number" name="amount" id="amount" placeholder="Ingresa el monto inicial" class="campos" required>
                 <br>
-                <input type="number" name="term" id="term" placeholder="Ingresa el plazo en días">
+                <input type="number" name="term" id="term" placeholder="Ingresa el plazo en días" class="campos" required>
                 <br>
-                <div>
+                <div id="resultCDT" style="display: none;">
                     <p>Tu ganancia sería de:</p>
-                    <p>$200,000.00</p>
+                    <p id="revenue"></p>
                     <div>
-                        <p>Tasa efetctiva: 10.35%</p>
-                        <p>Retención de la fuente: $1,000.98</p>
+                        <p id="interest"></p>
+                        <p id="retention"></p>
                     </div>
                 </div>
                 <p>¿Deseas calcular interés compuesto? </p>
-                <input name="intCompuesto" id="radioButtonYes" type="radio" value="YES"/>
-                <label for="">Si</label>
-                <input name="intCompuesto" id="radioButtonNo" type="radio" value="NO" />
-                <label for="">No</label>
-                <br>
-                <input type="number" name="numberYearsIC" id="numberYearsIC" placeholder="Ingresa el numero de años">
                 <div>
-                    <p>Tu ganancia con interés compuesto pero a 10 años sería:</p>
-                    <p>$20,000,000.00</p>
-                    <div>
-                        <p>Tasa anual: 10.35%</p>
+                    <input name="optionIntCompound" id="radioButtonYes" type="radio" value="" class="campos" required />
+                    <label for="">Si</label>
+                    <input name="optionIntCompound" id="radioButtonNo" type="radio" value="" class="campos" required/>
+                    <label for="">No</label>
+
+                </div>
+                <br>
+                <div id="intCompound" style="display: none;">
+                    <input type="number" name="numberYearsIC" id="numberYearsIC" class="campos" placeholder="Ingresa el numero de años">
+                    <div id="resultIC" style="display: none;">
+                        <p id="years"></p>
+                        <p id="revenueIC"></p>
+                        <div>
+                            <p id="interestIC"></p>
+                        </div>
                     </div>
                 </div>
-                <input type="button" id="calculate" value="CALCULAR">
-                <input type="submit" value="ENVÍAR RESULTADOS">
+                <br>
+                <input type="button" id="calculate" class="campos" value="CALCULAR">
+                <input type="submit" class="campos" value="ENVÍAR RESULTADOS">
             </form>      
         </div>
         <div>

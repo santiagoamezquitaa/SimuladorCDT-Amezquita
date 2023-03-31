@@ -54,10 +54,16 @@ const userData = {
     term: '',
     interest: '',
     revenue: '',
+    retention: '',
     compoundInterest: '',
     numberYears: '',
     revenueIC: '',
 };
+
+const names = document.getElementById("names");
+const lastName = document.getElementById("lastName");
+const email = document.getElementById("email");
+const numberPhone = document.getElementById("numberPhone");
 
 //FUNCION PARA CALCULAR EL INTERES DE ACUERDO AL BANCO SELECCIONADO Y EL PLAZO EN DÍAS
 
@@ -77,38 +83,66 @@ function calculateInterest(bank, term) {
 //FUNCION PARA CALCULAR EL CDT CON FORMULA
 
 function calculateCDT(amount, term, rates) {
-    const retencionFuente = 0.04;
+    const retention = 0.04;
 
     let calculate = amount * (Math.pow(1 + rates, (term / 360)) - 1);
-    let total = calculate - calculate * retencionFuente;
+    let retentionValue = calculate * retention;
+    let total = calculate - retentionValue ;
 
-    return total;
+    return [total, retentionValue];
 }
 
 //FUNCION PARA CALCULAR INTERES COMPUESTO CON FORMULA
 
 function calculateIC(startCapital, termYears, rates) {
-
-    return (startCapital* (Math.pow(1 + rates, termYears))); 
+    return (startCapital * (Math.pow(1 + rates, termYears)));
 }
 
-//ALMACENA LA INFORMACIÓN DEL USUARIO EN UN OBJETO AL DAR EN ENVIAR
+//RELLENAR RESULTADOS DEL CDT Y DEL INTERES COMPUESTO
+
+function fillResultCDT(revenue, interest, retention) {
+    document.getElementById('revenue').innerText = `$${revenue}`;
+    document.getElementById('interest').innerText = `Tasa efectiva: ${interest * 100}%`;
+    document.getElementById('retention').innerText = `Retención de la fuente: $${retention}`;
+}
+
+function fillResultIC(revenueIC, interestIC, numberYears) {
+    document.getElementById('years').innerText = `Tu ganancia con interés compuesto pero a ${numberYears} años sería: `;
+    document.getElementById('revenueIC').innerText = `$${revenueIC}`;
+    document.getElementById('interestIC').innerText = `Tasa anual: ${interestIC * 100}%`;
+}
+
+//CAPTURAR EVENTO INPUT RADIO CUANDO SI SE DESEA CALCULA INTERES COMPUESTO
+
+document.getElementById('radioButtonYes').addEventListener('click', () => {
+    document.getElementById('radioButtonYes').setAttribute('value', "yes");
+    document.getElementById('numberYearsIC').setAttribute('required', true);
+    document.getElementById('numberYearsIC').removeAttribute('disabled');
+})
+
+//CAPTURAR EVENTO INPUT RADIO CUANDO NO SE DESEA CALCULA INTERES COMPUESTO
+
+document.getElementById('radioButtonNo').addEventListener('click', () => {
+    document.getElementById('radioButtonNo').setAttribute('value', "no");
+    document.getElementById('numberYearsIC').setAttribute('value', 0);
+})
+
+//ALMACENAR LA INFORMACIÓN DEL USUARIO EN UN OBJETO AL DAR EN ENVIAR
 
 const form = document.querySelector("form");
 form.addEventListener('submit', (event) => {
 
     event.preventDefault();
 
-    userData.name = document.getElementById("names").value;
-    userData.lastName = document.getElementById("lastName").value;
-    userData.email = document.getElementById("email").value;
-    userData.phone = document.getElementById("numberPhone").value;
-    userData.bank = document.getElementById("bank").value;
+    userData.name = names.value;
+    userData.lastName = lastName.value;
+    userData.email = email.value;
+    userData.phone = numberPhone.value;
+    userData.bank = document.getElementById("selectBank").value;
     userData.amount = document.getElementById("amount").value;
     userData.term = document.getElementById("term").value;
 
-    console.log("Información del usuario: " + "\n" + JSON.stringify(userData))
-
+    localStorage.setItem('user_Data', JSON.stringify(userData));
 })
 
 // CALCULAR EL CDT SEGÚN LO INGRESADO EN EL FORMULARIO
@@ -116,36 +150,82 @@ form.addEventListener('submit', (event) => {
 document.querySelector("#calculate").addEventListener('click', (event) => {
 
     event.preventDefault();
-    userData.bank = document.getElementById("bank").value;
+    userData.bank = document.getElementById("selectBank").value;
     userData.amount = document.getElementById("amount").value;
     userData.term = document.getElementById("term").value;
 
     userData.interest = calculateInterest(userData.bank.toLowerCase(), userData.term);
-    console.log("El interes aplicado es: " + userData.interest * 100 + "%");
+    userData.revenue = calculateCDT(userData.amount, userData.term, userData.interest)[0];
+    userData.retention = calculateCDT(userData.amount, userData.term, userData.interest)[1];
 
-    userData.revenue = calculateCDT(userData.amount, userData.term, userData.interest);
-    console.log("Tu ganancia sería de: " + userData.revenue + " pesos");
+    fillResultCDT(userData.revenue, userData.interest, userData.retention);
+    document.getElementById("resultCDT").style.display = 'block';
 
-    userData.numberYears = document.getElementById("numberYearsIC").value;
-    userData.revenueIC = calculateIC(userData.amount, userData.numberYears, userData.interest);
-    console.log("Las ganancias con interes compuesto a " + userData.numberYears + " años, es de: " + userData.revenueIC);
-})
+    if (document.getElementById('radioButtonYes').value === 'yes') {
+        userData.numberYears = document.getElementById("numberYearsIC").value;
+        userData.revenueIC = calculateIC(userData.amount, userData.numberYears, userData.interest);
 
-// PARA SABER SI EL CLIENTE DESEA CALCULAR INTERES COMPUESTO O NO
-
-document.querySelector("#radioButtonYes").addEventListener('click', () => {
-
-    userData.compoundInterest = document.getElementById("radioButtonYes").value
-    console.log(userData.compoundInterest);
-    console.log("Por favor ingrese en el formulario el numero de años:");
+        fillResultIC(userData.revenueIC, userData.interest, userData.numberYears);
+        document.getElementById("resultIC").style.display = 'block';
+    }
 
 })
 
-document.querySelector("#radioButtonNo").addEventListener('click', () => {
+// PARA MOSTRAR EL CAMPO DE INTERES COMPUESTO Y SU RESULTADO
 
-    userData.compoundInterest = document.getElementById("radioButtonNo").value
-    console.log(userData.compoundInterest);
-    console.log("Por favor oprima el boton de calcular y si esta de acuerdo con el resultado envíe sus resultados:");
+const intCompound = document.getElementById("intCompound");
+const optionYes = document.querySelector("#radioButtonYes");
+const optionNo = document.querySelector("#radioButtonNo");
 
+optionYes.addEventListener('change', () => {
+    if (optionYes.checked) {
+        intCompound.style.display = 'block';
+    } else {
+        intCompound.style.display = 'none';
+    }
 })
+optionNo.addEventListener('change', () => {
+    if (optionNo.checked) {
+        intCompound.style.display = 'none';
+    } else {
+        intCompound.style.display = 'block';
+    }
+})
+
+//PARA DESACTIVAR LOS OTROS INPUT SI LOS ANTERIORES NO HAN SIDO RELLENADOS
+
+const campos = document.querySelectorAll('.campos');
+
+for (let i = 1; i < campos.length; i++) {
+    campos[i].setAttribute('disabled', true);
+
+    campos[i - 1].addEventListener('input', () => {
+        if (campos[i - 1].value !== '' && i < 9) {
+            campos[i].removeAttribute('disabled');
+        }
+        if (campos[6].value !== '') {
+            campos[7].removeAttribute('disabled');
+            campos[8].removeAttribute('disabled');
+        }
+        if (campos[8].value !== ''){
+            campos[10].removeAttribute('disabled');
+            campos[11].removeAttribute('disabled');
+        }
+        if (campos[9].value !== ''){
+            campos[10].removeAttribute('disabled');
+            campos[11].removeAttribute('disabled');
+        }    
+
+    });
+}
+
+//RECUPERAR DATOS DEL STORAGE Y USANDOLO EN TENER RELLENADOS LOS CAMPOS DE INFO USUARIO
+
+let basicDataUser = JSON.parse(localStorage.getItem('user_Data'));
+
+names.value = basicDataUser.name;
+lastName.value = basicDataUser.lastName;
+email.value = basicDataUser.email;
+numberPhone.value = basicDataUser.phone;
+
 
