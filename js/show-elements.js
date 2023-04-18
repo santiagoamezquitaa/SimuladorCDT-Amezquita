@@ -78,4 +78,10 @@ export class ShowElements {
             }
         })
     }
+
+    static showRateMaxMin (min, max) {
+        const textTerm = document.getElementById('textTerm');
+        textTerm.style.display = 'block';
+        textTerm.innerText = `De acuerdo al banco seleccionado ingrese un plazo entre ${min} y ${max} días.`;
+    }
 }

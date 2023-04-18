@@ -1,18 +1,117 @@
-* {
-    margin: 0;
-    padding: 0;
-  }
-  
+
   body {
     overflow-x: hidden;
     background-color: #EDF9FC;
   }
 
-  html {
-    font-size: 62.5%;
+  h1{
+    font-size: 3.2rem;
+    font-weight: bold;
   }
 
-  h1{
-    width: 412px;
-    font-size: 3.2rem;
+  h2 {
+    font-size: 2.8rem;
   }
+
+  h3 {
+    font-size: 1.8rem;
+  }
+
+  nav {
+    background-color: #005792;
+  }
+
+  .nav--a {
+    color:#FFFFFF;
+  }
+
+  .container--titles {
+    background-color: #FFFFFF;
+    padding-top: 3%;
+    padding-bottom: 3%;
+  }
+
+  .btn-success {
+    background-color: #52D33D;
+  }
+
+ .header--subtitle {
+    font-size: 1.3rem;
+ }
+
+ article div {
+    margin-right: auto;
+    margin-left: auto;
+    width: 18rem;
+ }
+
+ article div p {
+  font-size: 1rem;
+ }
+
+ article div div {
+  background-color: #D1F4FA;
+ }
+
+ .btn-primary {
+  background-color: #005792;
+ }
+
+ .container--simulate {
+  margin-top: 100px;
+  background-color: #FFFFFF;
+  padding-top: 3%;
+  padding-bottom: 3%;
+ }
+
+ .showElement {
+  display: none;
+ }
+
+ .showResultCDT {
+  background-color: #005792;
+ }
+
+ .showResultCDT div {
+  color: #ffffff;
+  font-size: 1.1rem;
+ }
+
+ .numericResult {
+  font-size: 3rem;
+  font-weight: bold;
+ }
+
+ .interestRetentionResult p{
+  font-size: 1.1rem;
+  color: black;
+  font-weight: bold;
+ }
+
+ .yearsResult{
+  color: #ffffff;
+  font-size: 1.1rem;
+ }
+
+ .span--customize {
+  background-color: #005792;
+  color: #FFFFFF;
+ }
+
+ .input--customize{
+  background-color: #D1F4FA;
+ }
+
+ .asesor {
+  margin-left: auto;
+ }
+
+ .footer {
+  background-color: #005792;
+ }
+
+ .p--footer {
+  color: #FFFFFF;
+  font-size: 1.3rem;
+  font-weight: bold;
+ }

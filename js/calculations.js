@@ -1,4 +1,5 @@
 import { apiData } from './call-api.js';
+import { ShowElements } from './show-elements.js';
 
 export class Calculations {
 
@@ -29,7 +30,7 @@ export class Calculations {
                 max = rangeMax;
             }
         }
-        document.getElementById('textTerm').innerText = `De acuerdo al banco seleccionado ingrese un plazo entre ${min} y ${max} días.`;
+        ShowElements.showRateMaxMin(min, max);
     }
 
     //METODO PARA CALCULAR EL CDT CON FORMULA

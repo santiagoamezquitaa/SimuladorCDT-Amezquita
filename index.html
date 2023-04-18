@@ -1,164 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
     <title>Document</title>
 </head>
+
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">Navbar</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                </ul>
-              </div>
+                <a class="navbar-brand nav--a" href="#">INICIO</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" style="color: white;" aria-current="page" href="./index.html#bancos">Bancos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" style="color: white;" aria-current="page" href="./index.html#simulate">Simulador</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link active" style="color: white;" aria-current="page" href="./index.html#contact">Contáctanos</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
 
-        <div class="container">
-            <h1>SIMULA TU CDT CON LA OPCIÓN DE INTERÉS COMPUESTO</h1>
-            <p>Encuentra las distintas tasas que el Grupo AVAL tiene para ti, simula tu CDT e incluye en tu simulación nuestra opción de interés compuesto.</p>
-            <div>
-                <p>¡INICIA TU SIMULACIÓN!</p>
-            </div>
-            <img src="" alt="">
-        </div>
-    
-    </header>
-    <section>
-        <div class="container">
-            <h2>Simula con las tasas de interés que ofrecen los bancos del Grupo AVAL</h2>
-            <article>
-                <div>
-                    <img src="" alt="">
-                </div>
-                <div>
-                    <h3>BANCO POPULAR</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem aspernatur obcaecati corporis excepturi quia! Deserunt modi earum maiores! Nostrum ratione temporibus, enim architecto dolor provident accusamus omnis dignissimos eos iure.</p>
-                </div>
-            </article>
-            <article>
-                <div>
-                    <img src="" alt="">
-                </div>
-                <div>
-                    <h3>BANCO AV VILLAS</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem aspernatur obcaecati corporis excepturi quia! Deserunt modi earum maiores! Nostrum ratione temporibus, enim architecto dolor provident accusamus omnis dignissimos eos iure.</p>
-                </div>
-            </article>
-            <article>
-                <div>
-                    <img src="" alt="">
-                </div>
-                <div>
-                    <h3>BANCO DE BOGOTÁ</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem aspernatur obcaecati corporis excepturi quia! Deserunt modi earum maiores! Nostrum ratione temporibus, enim architecto dolor provident accusamus omnis dignissimos eos iure.</p>
-                </div>
-            </article>
-            <article>
-                <div>
-                    <img src="" alt="">
-                </div>
-                <div>
-                    <h3>BANCO DE OCCIDENTE</h3>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem aspernatur obcaecati corporis excepturi quia! Deserunt modi earum maiores! Nostrum ratione temporibus, enim architecto dolor provident accusamus omnis dignissimos eos iure.</p>
-                </div>
-            </article>
-        </div>
-        <div class="container">
-            <h2>Simula tu CDT</h2>
-            <div>
-                <img src="" alt="">
-            </div>
-            <form action="">
-                <h3>DATOS DE CONTÁCTO</h3>
-                <input type="text" placeholder="Nombres" id="names" class="campos" pattern="^[a-zA-Z\u00F1\u00D1\s]+(\s[a-zA-Z\u00F1\u00D1]+)*$" required>
-                <br>
-                <input type="text" placeholder="Apellidos" id="lastName" class="campos" pattern="^[a-zA-Z\u00F1\u00D1]+(\s[a-zA-Z\u00F1\u00D1]+)*$" required>
-                <br>
-                <input type="text" placeholder="E-mail" id="email" class="campos" pattern="^[a-z0-9][a-z0-9-_\.]+@([a-z]|[a-z0-9]?[a-z0-9-]+[a-z0-9])\.[a-z0-9]{2,10}(?:\.[a-z]{2,10})?$" required>
-                <br>
-                <input type="text" placeholder="Celular" id="numberPhone" class="campos" pattern="\d{10}" amountrequired>
-                <br>
-                <h3>DATOS PARA CÁLCULO DE CDT</h3>
-                <select name="bank" id="selectBank" class="campos" required>
-                    <option selected disabled value="">Selecciona un banco</option>
-                    <option value="BPOP">Banco Popular</option>
-                    <option value="BAVV">Banco Av Villas</option>
-                    <option value="BBGT">Banco de Bogotá</option>
-                    <option value="BOCC">Banco de Occidente</option>
-                </select>
-                <br>
-                <input type="number" name="amount" id="amount" placeholder="Ingresa el monto inicial" class="campos" pattern="^([0-9]\d*)?$" required>
-                <br>
-                <input type="number" name="term" id="term" placeholder="Ingresa el plazo en días" class="campos" pattern="^([0-9]\d*)?$" required>
-                <p id="textTerm"></p>
-                <br>
-                <div id="resultCDT" style="display: none;">
-                    <p>Tu ganancia sería de:</p>
-                    <p id="revenue"></p>
-                    <div>
-                        <p id="interest"></p>
-                        <p id="retention"></p>
-                    </div>
-                </div>
-                <p>¿Deseas calcular interés compuesto? </p>
-                <div>
-                    <input name="optionIntCompound" id="radioButtonYes" type="radio" value="" class="campos" required/>
-                    <label for="">Si</label>
-                    <input name="optionIntCompound" id="radioButtonNo" type="radio" value="" class="campos" required/>
-                    <label for="">No</label>
-
-                </div>
-                <br>
-                <div id="intCompound" style="display: none;">
-                    <input type="number" name="numberYearsIC" id="numberYearsIC" class="campos" placeholder="Ingresa el numero de años" pattern="^([0-9]\d*)?$">
-                    <div id="resultIC" style="display: none;">
-                        <p id="years"></p>
-                        <p id="revenueIC"></p>
-                        <div>
-                            <p id="interestIC"></p>
+        <div class="container--titles">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <h1>SIMULA TU CDT CON LA OPCIÓN DE INTERÉS COMPUESTO</h1>
+                        <p class="col-md-10 mt-5 header--subtitle">Encuentra las distintas tasas que el Grupo AVAL tiene
+                            para ti, simula tu CDT e incluye en tu simulación nuestra opción de interés compuesto.</p>
+                        <div class="mt-5">
+                            <a class="btn btn-success" href="./index.html#simulate" role="button">¡INICIA TU
+                                SIMULACIÓN!</a>
                         </div>
                     </div>
+                    <div class="col-md-6 text-center">
+                        <img src="./assets/imgs/AppFinance1.png" class="img-fluid" alt="">
+                    </div>
                 </div>
-                <br>
-                <input type="button" id="calculate" class="campos" value="CALCULAR" disabled>
-                <input type="submit" id="submitData" class="campos" value="ENVÍAR RESULTADOS" disabled>
-            </form>      
-        </div>
-        <div>
-            <h2>Contácta a nuestros asesores</h2>
-            <p>Estamos disponibles para ti sin que tengas que salir de casa. Puedes hablar con nuestro equipo por llamada o por Whatsapp.</p>
-            <div>
-                <img src="" alt="">
-                <input type="button" value="Contacta a un asesor">
             </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <h2 class="mt-5 text-center" id="bancos">Simula con las tasas de interés que ofrecen los bancos del Grupo AVAL</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <article class="text-center">
+                        <div class="card mt-5">
+                            <img src="./assets/imgs/bpop.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <p class="card-text">Abre tu CDT ganador desde $300.000 y gana ya con rentabilidades del
+                                    12.35% E.A.</p>
+                                <a href="https://www.bancopopular.com.co/wps/portal/bancopopular/inicio/"
+                                    class="btn btn-primary">Más información</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-6">
+                    <article class="text-center">
+                        <div class="card mt-5">
+                            <img src="./assets/imgs/bavv.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <p class="card-text">Abre un CDT digital y transfiere tu plata por PSE. A mayor plazo,
+                                    recibes una mayor tasa.</p>
+                                <a href="https://www.avvillas.com.co/" class="btn btn-primary">Más información</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-6">
+                    <article class="text-center">
+                        <div class="card mt-5">
+                            <img src="./assets/imgs/bbgt.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <p class="card-text">Es momento de hacer crecer tu dinero a otro ritmo. En solo 5
+                                    minutos abre tu CDT digital con tasas desde 12.42%.</p>
+                                <a href="https://www.bancodebogota.com/wps/portal/banco-de-bogota/bogota"
+                                    class="btn btn-primary">Más información</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-md-6">
+                    <article class="text-center">
+                        <div class="card mt-5">
+                            <img src="./assets/imgs/bocc.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <p class="card-text">Invierte tu dinero en una alternativa sólida y confiable obteniendo
+                                    una atractiva rentabilidad con todo el respaldo que necesitas.</p>
+                                <a href="https://www.bancodeoccidente.com.co/wps/portal/banco-de-occidente/bancodeoccidente"
+                                    class="btn btn-primary">Más información</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="container--simulate">
+            <div class="container">
+                <h2 id="simulate" class="text-center">Simula tu CDT</h2>
+                <div class="col-md-12 text-center mt-5">
+                    <img src="./assets/imgs/AppFinance2.png" class="img-fluid" alt="">
+                </div>
+                <form class="form--center">
+                    <h3 class="mt-5 mb-5">DATOS DE CONTÁCTO</h3>
+                    <div class="col-md-6">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text span--customize" id="basic-addon1">Nombres</span>
+                            <input type="text" id="names" class="form-control campos input--customize" placeholder="Ingresa tu nombre"
+                                pattern="^[a-zA-Z\u00F1\u00D1\s]+(\s[a-zA-Z\u00F1\u00D1]+)*$" required="">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text span--customize" id="basic-addon1">Apellidos</span>
+                            <input type="text" id="lastName" class="form-control campos input--customize" placeholder="Ingresa tus apellidos"
+                                pattern="^[a-zA-Z\u00F1\u00D1\s]+(\s[a-zA-Z\u00F1\u00D1]+)*$" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text span--customize" id="basic-addon1">E-mail</span>
+                            <input type="text" id="email" class="form-control campos input--customize" placeholder="Ingresa tu correo electrónico"
+                                pattern="^[a-z0-9][a-z0-9-_\.]+@([a-z]|[a-z0-9]?[a-z0-9-]+[a-z0-9])\.[a-z0-9]{2,10}(?:\.[a-z]{2,10})?$"
+                                required>
+                        </div>
+                        <div class="input-group mb-5">
+                            <span class="input-group-text span--customize" id="basic-addon1">Celular</span>
+                            <input type="text" id="numberPhone" class="form-control campos input--customize" placeholder="Ingresa tu número de celular" pattern="\d{10}"
+                                required>
+                        </div>
+                    <h3 class="mb-5">DATOS PARA CÁLCULO DE CDT</h3>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text span--customize" for="inputGroupSelect01">Banco</label>
+                            <select name="bank" class="form-select campos input--customize" id="selectBank" required>
+                                <option disabled selected value="">Selecciona...</option>
+                                <option value="BPOP">Banco Popular</option>
+                                <option value="BAVV">Banco Av Villas</option>
+                                <option value="BBGT">Banco de Bogotá</option>
+                                <option value="BOCC">Banco de Occidente</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3 text-center">
+                            <span class="input-group-text span--customize" id="basic-addon1">Monto</span>
+                            <input type="number" name="amount" id="amount" placeholder="Ingresa el monto inicial"
+                                class="form-control campos input--customize" pattern="^([0-9]\d*)?$" required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text span--customize" id="basic-addon1">Plazo</span>
+                            <input type="number" name="term" id="term" placeholder="Ingresa el plazo en días"
+                                class="form-control campos input--customize" pattern="^([0-9]\d*)?$" required>
+                        </div>
+                        <div id="textTerm" class="alert alert-primary showElement" role="alert">
+                        </div>
+
+                        <div class="card p-3 showResultCDT mb-3" id="resultCDT" style="display: none;">
+                            <div class="card-body">
+                                Tu ganancia sería de:
+                                <p id="revenue" class="numericResult"></p>
+                                <div class="card">
+                                    <div class="card-body interestRetentionResult">
+                                        <p id="interest"></p>
+                                        <p id="retention"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="mb-3">¿Deseas calcular interés compuesto? </p>
+                        <div class="form-check col-md-3">
+                            <input class="form-check-input campos input--customize" type="radio" name="optionIntCompound"
+                                id="radioButtonYes" value="" required />
+                            <label class="form-check-label" for="">
+                                Si
+                            </label>
+                        </div>
+                        <div class="form-check col-md-3">
+                            <input class="form-check-input campos input--customize" type="radio" name="optionIntCompound"
+                                id="radioButtonNo" value="" required />
+                            <label class="form-check-label" for="">
+                                No
+                            </label>
+                        </div>
+
+                        <div id="intCompound" style="display: none;">
+                            <div class="input-group mb-3 mt-3">
+                                <span class="input-group-text span--customize" id="basic-addon1">Años</span>
+                                <input type="number" name="numberYearsIC" id="numberYearsIC" class="form-control campos input--customize"
+                                    placeholder="Ingresa el numero de años" pattern="^([0-9]\d*)?$">
+                            </div>
+                        </div>
+
+                        <div class="card p-3 showResultCDT mt-3" id="resultIC" style="display: none;">
+                            <div class="card-body">
+                                <p id="years" class="yearsResult"></p>
+                                <p id="revenueIC" class="numericResult"></p>
+                                <div class="card">
+                                    <div class="card-body interestRetentionResult">
+                                        <p id="interestIC"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type="button" id="calculate" class="btn btn-success campos mt-3" value="CALCULAR"
+                            disabled>
+                        <input type="submit" id="submitData" class="btn btn-success campos mt-3"
+                            value="ENVÍAR RESULTADOS" disabled>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <h2 class="mt-5 text-center" id="contact">Contácta a nuestros asesores</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="col-md-5 mt-5 asesor">Estamos disponibles para ti sin que tengas que salir de casa. Puedes hablar con nuestro equipo por
+                        llamada o por Whatsapp.</p>
+                    <div class="col-md-5 mt-3 asesor">
+                        <a class="btn btn-success" href="https://www.whatsapp.com/?lang=es" role="button">Contácta a un asesor!</a>
+                    </div>  
+                </div>    
+
+                <div class="col-md-6 mt-5 mb-5">
+                    <img src="./assets/imgs/AppFinance3.png" class="img-fluid" alt="">
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <footer>
-        <h2>Footer</h2>
-    </footer>
+    <div class="footer">
+        <div class="container">
+            <div class="row p-5">
+            <footer>
+                <div class="col-md-12 text-center">
+                    <img src="./assets/imgs/footer.png" class="img-fluid" alt="">
+                </div>
+                <p class="text-center mt-5 p--footer">2023 - Desarrollado en mi curso de desarrollo web</p>
+            </footer>
+            </div>
+        </div>
+    </div>
+
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/luxon@2.3.0/build/global/luxon.min.js"></script>
 <script type="module" src="js/main.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+
 </html>
